@@ -20,7 +20,7 @@ electroencephalography (EEG) signals.
 # Project Requirements
 These are the main features and functions our system should have.
 
-   Functional Requirements:
+Functional Requirements:
 
 - Save and manage EEG data.
 - Let users (like doctors and patients) see seizure prediction results.
@@ -28,7 +28,7 @@ These are the main features and functions our system should have.
 - Show visual charts or graphs of EEG data trends.
 - Include a machine learning model to predict seizures.
 
-   Non-Functional Requirements:
+Non-Functional Requirements:
 
 - Be available and reliable so users can depend on it.
 - Meet performance goals, like fast response times for predictions.
