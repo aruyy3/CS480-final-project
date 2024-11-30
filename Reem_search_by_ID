@@ -1,1 +1,3 @@
-
+SELECT * 
+FROM VideoGame
+WHERE GameID = <your_game_id>; //needs to be specified
