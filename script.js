@@ -11,38 +11,46 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 return response.json();
             })
-            .then((data) => {
-                displayGames(data, genre);
+            .then((games) => {
+                displayGames(games, genre);
             })
             .catch((error) => {
                 console.error("Error fetching games by genre:", error);
+                mainContent.innerHTML = `<p>Failed to load games for the genre "${genre}".</p>`;
             });
     }
-
-    // Function to display fetched games
+    
+    // Function to display the fetched games
     function displayGames(games, genre) {
         historyStack.push(mainContent.innerHTML); // Save the current content to history
-        mainContent.innerHTML = `
-            <h3>Search Results for "${genre}"</h3>
-            <ul>
-                ${games.length
-                    ? games
-                          .map(
-                              (game) => `
+        if (games.length === 0) {
+            mainContent.innerHTML = `
+                <h3>No games found for "${genre}"</h3>
+                <button id="backButton">&larr; Back</button>
+            `;
+        } else {
+            mainContent.innerHTML = `
+                <h3>Games in "${genre}" Genre</h3>
+                <ul>
+                    ${games
+                        .map(
+                            (game) => `
                             <li>
                                 <strong>${game.Title}</strong> (${game.Genre})
                                 <br>Developer: ${game.Developer}
                                 <br>Publisher: ${game.Publisher}
                                 <br>Release Year: ${game.ReleaseYear}
                             </li>`
-                          )
-                          .join("")
-                    : `<p>No games found for genre "${genre}".</p>`}
-            </ul>
-            <button id="backButton">&larr; Back</button>
-        `;
-        attachBackButtonListener(); // Attach listener to back button
+                        )
+                        .join("")}
+                </ul>
+                <button id="backButton">&larr; Back</button>
+            `;
+        }
+    
+        document.getElementById("backButton").addEventListener("click", navigateBack);
     }
+    
 
     // Function to navigate to the search screen
     function navigateToSearchScreen() {

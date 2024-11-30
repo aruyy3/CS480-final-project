@@ -112,7 +112,35 @@ app.get("/game/:id", (req, res) => {
     });
 });
 
+app.get("/search", (req, res) => {
+    const genre = req.query.genre; // Get genre from query parameters
+    if (!genre) {
+        res.status(400).send("Genre parameter is required");
+        return;
+    }
+
+    const query = `
+        SELECT 
+            GameID, Title, Genre, Developer, Publisher, ReleaseYear
+        FROM 
+            VideoGame
+        WHERE 
+            Genre LIKE ?; -- Case-insensitive match
+    `;
+
+    db.query(query, [`%${genre}%`], (err, results) => {
+        if (err) {
+            console.error("Error executing search query:", err);
+            res.status(500).send("Search query failed");
+            return;
+        }
+        res.json(results);
+    });
+});
+
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
