@@ -1,49 +1,61 @@
 const express = require("express");
 const cors = require("cors");
-const mysql = require("mysql");
+const sqlite3 = require("sqlite3").verbose();
 
 const app = express();
-const PORT = 3000;
+const PORT = 8000;
 
 // Enable CORS
 app.use(cors());
 
-// MySQL Database configuration
-const dbConfig = {
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "video_game_library",
-    port: 3306
-};
-
-// Create a MySQL connection
-const db = mysql.createConnection(dbConfig);
-
-// Handle connection errors
-db.connect((err) => {
+// SQLite Database connection
+const db = new sqlite3.Database("./video_game_library.sqlite", sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
-        console.error("Error connecting to database:", err);
-        process.exit(1); // Exit on connection failure
+        console.error("Error connecting to the SQLite database:", err.message);
+        process.exit(1); // Exit if connection fails
     }
-    console.log("Connected to the database!");
-});
-
-// Endpoint to fetch all genres
-app.get("/genres", (req, res) => {
-    const query = "SELECT DISTINCT Name AS Genre FROM Genre ORDER BY Name ASC;";
-    db.query(query, (err, results) => {
-        if (err) {
-            console.error("Error retrieving genres:", err);
-            res.status(500).send("Failed to retrieve genres");
-            return;
-        }
-        res.json(results);
-    });
+    console.log("Connected to the SQLite database!");
 });
 
 // Endpoint to search games by genre
-app.get("/search", (req, res) => {
+app.get("/searchByGenre", (req, res) => {
+    const genre = req.query.genre;
+    if (!genre) {
+        res.status(400).send("Genre parameter is required");
+        return;
+    }
+
+    const query = `
+        SELECT 
+            vg.GameID,
+            vg.Title,
+            vg.Platform,
+            vg.ReleaseYear,
+            vg.Developer,
+            vg.Publisher
+        FROM 
+            VideoGame vg
+        JOIN 
+            VideoGameGenre vgg ON vg.GameID = vgg.GameID
+        JOIN 
+            Genre g ON vgg.GenreID = g.GenreID
+        WHERE 
+            g.Name = ?;
+    `;
+
+    db.all(query, [genre], (err, rows) => {
+        if (err) {
+            console.error("Error executing search query:", err.message);
+            res.status(500).send("Search query failed");
+            return;
+        }
+        res.json(rows);
+    });
+});
+
+
+// Endpoint to search games by genre
+app.get("/searchByGenre", (req, res) => {
     const genre = req.query.genre;
     if (!genre) {
         res.status(400).send("Genre parameter is required");
@@ -67,14 +79,13 @@ app.get("/search", (req, res) => {
         WHERE 
             g.Name = ?
     `;
-
-    db.query(query, [genre], (err, results) => {
+    db.all(query, [genre], (err, rows) => {
         if (err) {
-            console.error("Error executing search query:", err);
+            console.error("Error executing search query:", err.message);
             res.status(500).send("Search query failed");
             return;
         }
-        res.json(results);
+        res.json(rows);
     });
 });
 
@@ -101,46 +112,17 @@ app.get("/game/:id", (req, res) => {
         GROUP BY 
             vg.GameID
     `;
-
-    db.query(query, [gameID], (err, results) => {
+    db.get(query, [gameID], (err, row) => {
         if (err) {
-            console.error("Error fetching game details:", err);
+            console.error("Error fetching game details:", err.message);
             res.status(500).send("Failed to fetch game details");
             return;
         }
-        res.json(results[0] || {});
+        res.json(row || {});
     });
 });
-
-app.get("/search", (req, res) => {
-    const genre = req.query.genre; // Get genre from query parameters
-    if (!genre) {
-        res.status(400).send("Genre parameter is required");
-        return;
-    }
-
-    const query = `
-        SELECT 
-            GameID, Title, Genre, Developer, Publisher, ReleaseYear
-        FROM 
-            VideoGame
-        WHERE 
-            Genre LIKE ?; -- Case-insensitive match
-    `;
-
-    db.query(query, [`%${genre}%`], (err, results) => {
-        if (err) {
-            console.error("Error executing search query:", err);
-            res.status(500).send("Search query failed");
-            return;
-        }
-        res.json(results);
-    });
-});
-
 
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
-
