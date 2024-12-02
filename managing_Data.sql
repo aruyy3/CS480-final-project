@@ -1,46 +1,536 @@
---1. Checks Wheather a Specific game is there in the stock or not                                                        and displays the number of available copies.
-
+-- The Legend of Zelda
 SELECT 
-    VG.Title, 
-    GC.NoOfCopies, 
+    'The Legend of Zelda' AS Title, 
     CASE 
-        WHEN GC.NoOfCopies > 0 THEN 'In Stock'
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
         ELSE 'Out of Stock'
     END AS StockStatus
-FROM VideoGame VG
-JOIN GameCopy GC ON VG.GameID = GC.GameID
-WHERE VG.GameID = ?;    /*HERE THE ? is we need to replace this with the specific Game ID added by user*/
+FROM video_game_library
+WHERE GameID = 1;
+
+-- Call of Duty
+SELECT 
+    'Call of Duty' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 2;
+
+-- FIFA 24
+SELECT 
+    'FIFA 24' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 3;
+
+-- The Sims 4
+SELECT 
+    'The Sims 4' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 4;
+
+-- Minecraft
+SELECT 
+    'Minecraft' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 5;
+
+--MOCK GAMES
+SELECT 
+    'Mock Game 6' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 6;
+
+SELECT 
+    'Mock Game 7' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 7;
+
+SELECT 
+    'Mock Game 8' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 8;
+
+SELECT 
+    'Mock Game 9' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 9;
+
+SELECT 
+    'Mock Game 10' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 10;
+
+SELECT 
+    'Mock Game 11' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 11;
+
+SELECT 
+    'Mock Game 12' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 12;
+
+SELECT 
+    'Mock Game 13' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 13;
+
+SELECT 
+    'Mock Game 14' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 14;
+
+SELECT 
+    'Mock Game 15' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 15;
+
+SELECT 
+    'Mock Game 16' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 16;
+
+SELECT 
+    'Mock Game 17' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 17;
+
+SELECT 
+    'Mock Game 18' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 18;
+
+SELECT 
+    'Mock Game 19' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 19;
+
+SELECT 
+    'Mock Game 20' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 20;
+
+SELECT 
+    'Mock Game 21' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 21;
+
+SELECT 
+    'Mock Game 22' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 22;
+
+SELECT 
+    'Mock Game 23' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 23;
+
+SELECT 
+    'Mock Game 24' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 24;
+
+SELECT 
+    'Mock Game 25' AS Title, 
+    CASE 
+        WHEN AvailabilityStatus = 1 THEN 'In Stock'
+        ELSE 'Out of Stock'
+    END AS StockStatus
+FROM video_game_library
+WHERE GameID = 25;
 
 
---2. Mark a Game as Borrowed 
- This updates the Borrowed status and reduces the available copies by 1.
-UPDATE GameCopy
+--IF GAME IS BORROWED
+-- The Legend of Zelda
+UPDATE video_game_library
 SET 
-    Borrowed = TRUE,
-    NoOfCopies = 0
-WHERE GameCopyID = ? AND NoOfCopies > 0;   /*Same as above here also we need to change the ? with the specific GameCOpyID*/
+    AvailabilityStatus = 0
+WHERE GameID = 1;
 
-
---3. Mark a Game as Returned 
-This updates the Borrowed status and increases the available copies by 1.
-UPDATE GameCopy
+-- Call of Duty
+UPDATE video_game_library
 SET 
-    Borrowed = FALSE,
-    NoOfCopies =  1
-WHERE GameCopyID = ? AND Borrowed = TRUE;  /*HERE THE ? is we need to replace this with the specific Game CopyID*/
+    AvailabilityStatus = 0
+WHERE GameID = 2;
 
-
---4. Add New Game Copies 
- This adds a specified number of new copies of an existing game to inventory.
-UPDATE GameCopy
+-- FIFA 24
+UPDATE video_game_library
 SET 
-    NoOfCopies = NoOfCopies + ?
-WHERE GameID = ?;  /*Replace ? with the number of copies and the specific GameID*/
+    AvailabilityStatus = 0
+WHERE GameID = 3;
 
- --5. Remove Copies of a Game 
-This removes a specified number of copies from inventory.
- It ensures that the number of copies does not go below zero.
-UPDATE GameCopy
+-- The Sims 4
+UPDATE video_game_library
 SET 
-    NoOfCopies = GREATEST(0, NoOfCopies - ?)
-WHERE GameID = ?;  /* Replace '?' with the number of copies to remove and the specific GameID*/
+    AvailabilityStatus = 0
+WHERE GameID = 4;
+
+-- Minecraft
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 5;
+
+-- Mock Game 6
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 6;
+
+-- Mock Game 7
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 7;
+
+-- Mock Game 8
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 8;
+
+-- Mock Game 9
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 9;
+
+-- Mock Game 10
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 10;
+
+-- Mock Game 11
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 11;
+
+-- Mock Game 12
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 12;
+
+-- Mock Game 13
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 13;
+
+-- Mock Game 14
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 14;
+
+-- Mock Game 15
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 15;
+
+-- Mock Game 16
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 16;
+
+-- Mock Game 17
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 17;
+
+-- Mock Game 18
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 18;
+
+-- Mock Game 19
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 19;
+
+-- Mock Game 20
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 20;
+
+-- Mock Game 21
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 21;
+
+-- Mock Game 22
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 22;
+
+-- Mock Game 23
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 23;
+
+-- Mock Game 24
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 24;
+
+-- Mock Game 25
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 0
+WHERE GameID = 25;
+
+--IF GAME IS RETURNED
+
+-- The Legend of Zelda
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 1;
+
+-- Call of Duty
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 2;
+
+-- FIFA 24
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 3;
+
+-- The Sims 4
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 4;
+
+-- Minecraft
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 5;
+
+-- Mock Game 6
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 6;
+
+-- Mock Game 7
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 7;
+
+-- Mock Game 8
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 8;
+
+-- Mock Game 9
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 9;
+
+-- Mock Game 10
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 10;
+
+-- Mock Game 11
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 11;
+
+-- Mock Game 12
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 12;
+
+-- Mock Game 13
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 13;
+
+-- Mock Game 14
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 14;
+
+-- Mock Game 15
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 15;
+
+-- Mock Game 16
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 16;
+
+-- Mock Game 17
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 17;
+
+-- Mock Game 18
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 18;
+
+-- Mock Game 19
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 19;
+
+-- Mock Game 20
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 20;
+
+-- Mock Game 21
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 21;
+
+-- Mock Game 22
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 22;
+
+-- Mock Game 23
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 23;
+
+-- Mock Game 24
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 24;
+
+-- Mock Game 25
+UPDATE video_game_library
+SET 
+    AvailabilityStatus = 1
+WHERE GameID = 25;
+
+
